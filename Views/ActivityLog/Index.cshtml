@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Visitors.Models.ActivityLog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Activity Logs</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Action)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timestamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrowserInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IPAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Action)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timestamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrowserInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IPAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FulllName)
+            </td>
+            <td>
+                
+                <a asp-action="Details" class="btn btn-success" asp-route-id="@item.LogID"> View</a> 
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
